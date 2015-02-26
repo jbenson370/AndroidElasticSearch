@@ -141,8 +141,9 @@ public class ESMovieManager {
 			throw new RuntimeException(e);
 		}
 		
-		// Extract the movies from the esResponse and put them in result
-
+		// TODO Extract the movies from the esResponse and put them in result
+		// I would need to take in the result given which is a search response
+		//we need to extract that data from the result so it can be set to the activity for the user to view.
 		movies.notifyObservers();
 	}
 }

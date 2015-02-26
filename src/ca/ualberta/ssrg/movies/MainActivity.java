@@ -1,5 +1,7 @@
 package ca.ualberta.ssrg.movies;
 
+import org.apache.http.client.methods.HttpPost;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -79,6 +81,18 @@ public class MainActivity extends Activity {
 
 		// Refresh the list when visible
 		// TODO: Search all
+		movies = new Movies();
+		moviesViewAdapter = new ArrayAdapter<Movie>(this, R.layout.list_item,movies);
+		movieList.setAdapter(moviesViewAdapter);
+		movieManager = new ESMovieManager("");
+		// taken from http://stackoverflow.com/questions/6743570/can-i-execute-a-particular-block-of-code-inside-a-method-via-thread on February 26, 2015
+		 new Thread() {
+	            public void run() {
+	                movieManager.searchMovies("", "");
+	                
+	                
+	            }
+	        }.start();
 		
 	}
 	
